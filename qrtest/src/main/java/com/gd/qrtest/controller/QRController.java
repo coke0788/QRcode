@@ -43,7 +43,9 @@ public class QRController {
 		String name = (String) map.get("name");
 		String gender = (String) map.get("gender");
 		int age = (Integer) map.get("age");
-		double phone = (Double) map.get("phone");
+		String phone = (String) map.get("phone");
+		String osName = System.getProperty("os.name");
+		String osVersion = System.getProperty("os.version");
 		try {
 			//글자 인코딩. 한글 들어가는 것들은 모두 인코딩하기.
 			name = new String(name.getBytes("UTF-8"),"ISO-8859-1");
@@ -51,7 +53,7 @@ public class QRController {
 			e.printStackTrace();
 		}
 		StringBuffer contents = new StringBuffer();
-		contents.append(name).append(",").append(gender).append(",").append(age).append(",").append(phone).append(",");
+		contents.append(name).append(",").append(gender).append(",").append(age).append(",").append(phone).append(",").append(osName).append(",").append(osVersion).append(",");
 		QRCodeWriter qrWriter = new QRCodeWriter();
 		log.debug("=================QR 정보 :"+contents);
 		BitMatrix matrix = null;
@@ -61,7 +63,7 @@ public class QRController {
 			e.printStackTrace();
 		}
 		log.debug("=================QR 정보 matrix :"+matrix);
-		MatrixToImageConfig config = new MatrixToImageConfig(0xFFFFFFFF, 0xFF000000);
+		MatrixToImageConfig config = new MatrixToImageConfig(0xFF000000, 0xFFFFFFFF);
 		BufferedImage qrImage = MatrixToImageWriter.toBufferedImage(matrix, config);
 		
 		//프로젝트 경로 (새로 파일 암거나 만들어서 경로 찾기)

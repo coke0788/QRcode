@@ -18,7 +18,7 @@ public class QRService {
 		String name = qrInputForm.getName();
 		String gender = qrInputForm.getGender();
 		int age = qrInputForm.getAge();
-		double phone = qrInputForm.getPhone();
+		String phone = qrInputForm.getPhone();
 		Map<String, Object> map = new HashMap<>();
 		map.put("gender", gender);
 		map.put("name", name);

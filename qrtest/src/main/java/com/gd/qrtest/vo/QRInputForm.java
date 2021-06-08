@@ -6,6 +6,6 @@ import lombok.Data;
 public class QRInputForm {
 	private String name;
 	private int age;
-	private double phone;
+	private String phone;
 	private String gender;
 }
